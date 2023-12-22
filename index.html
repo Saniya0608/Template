@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survey List</title>
+    <style>
+      *,
+      ::after,
+      ::before {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      ul,
+      li {
+        margin: 0px;
+      }
+      body {
+        width: 800px;
+        height: 1100px;
+        padding: 0px;
+        margin: 0px;
+        background-color: white;
+        font-family: sans-serif;
+
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      .templateWrapper {
+        position: relative;
+      }
+      /************Header Style***********/
+      .quotationHeading {
+        position: absolute;
+        top: 4px;
+        font-size: 28px;
+        left: 22px;
+        color: #036ffc;
+      }
+      .packerCompanyDetails {
+        top: 20px;
+        position: absolute;
+        width: 40%;
+        right: 15px;
+        display: flex;
+        /* align-items: center; */
+      }
+      .phoneStyle {
+        margin-top: 3px;
+        display: flex;
+        align-items: center;
+      }
+      .phoneStyle span {
+        margin-left: 3px;
+        color: #fff;
+        font-size: 14px;
+      }
+      .emailStyle {
+        margin-top: 3px;
+        display: flex;
+        align-items: center;
+      }
+      .emailStyle span {
+        margin-left: 3px;
+        color: #fff;
+        font-size: 14px;
+      }
+      .webstyle {
+        margin-top: 3px;
+        display: flex;
+        align-items: center;
+      }
+      .webstyle span {
+        margin-left: 3px;
+        color: #fff;
+        font-size: 14px;
+      }
+      .documentStyle{
+        width: 75%;
+    z-index: 9999;
+    position: absolute;
+    top: 136px;
+    left: 20px;
+      }
+      .documentStyle p{
+        font-size: 12px;
+        color: #031438;
+        font-weight: 500;
+      }
+      /************Client Details Style***********/
+      .quotationToStyle {
+        position: relative;
+        padding: 0 20px;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+      }
+      .quotationToStyle p {
+        font-weight: 600;
+      }
+      .clientEmailStyle{ 
+        font-size: 14px;
+        margin-top: 2.5px;
+        display:flex ;
+        align-items: center;
+      }
+      
+  /************Shifting Type Style***********/
+  .shiftingTypetbl{
+    padding: 5px 20px;
+  }
+  .shiftingTypetbl table{
+    width: 100%;    
+  }
+  .shiftingTypetbl td{
+    font-size: 12px;
+    border: 1px solid #777;
+    border-top: hidden;
+    border-right: hidden;
+    border-left: hidden;
+    font-size: 13px;
+    text-align: left;
+    margin-top: 5px;
+    padding: 8px 0;
+  }
+  .shiftingTypetbl span{
+    font-weight: 500;
+    font-size: 16px;
+  }
+/************Main table Style***********/
+      .mainTable{
+        padding: 5px 20px;
+      }
+      .mainTable table{
+        width: 100%;
+        table-layout: fixed;
+        border-collapse:collapse  
+      }
+      .mainTable  td{
+        padding: 3px;
+       border: 1px solid #000;
+     
+      }
+      .mainTable th{
+        background-color: #EAE4FB;
+      }
+      .textalign{
+        text-align: center;
+      }
+      /************other charges Inner table Style***********/
+      .innerTable table{
+        width: 100%;
+        table-layout: fixed;
+        border-collapse:collapse  
+      }
+   .innerTable td{
+       padding: 5px;
+       border: 1px solid #000;
+       text-align: center;
+}
+ /*******Other Details Style*********/
+  .otherDetail {
+    margin: 0 20px;
+    padding: 5px 20px;
+        border: 1px solid black;
+      }
+      .otherDetail p {
+        margin-bottom: 4px;
+      }
+
+ /************Payments details style ***************/
+ .paymentDetails {
+        margin: 0  20px 5px ;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid black;
+        padding: 5px;
+      }
+      .bankDetail {
+        padding: 10px;
+        width: "webkit-fill-available";
+        border: 1px solid black;
+      }
+      .bankDetail p {
+        margin-bottom: 3px;
+        font-weight: 500;
+      }
+      .upiDetail {
+        padding: 10px;
+        width: 320px;
+        height: 130px;
+        border: 1px solid black;
+        margin: 5px;
+      }
+      .upiDetail p {
+        margin-bottom: 3px;
+        font-weight: 500;
+      }
+      .qrCode {
+        padding: 10px;
+        width: 150px;
+        height: 130px;
+        border: 1px solid black;
+      }
+     /************ T. N.Conditons style ***************/
+    .tncConditions{
+      margin: 0 20px;
+      display: flex;
+      align-items:baseline;
+      justify-content:space-between;
+    }
+     /************ T. N.Conditons style ***************/
+     .notes{
+      margin: 5px 20px;
+      display: flex;
+      align-items:baseline;
+      justify-content:space-between;
+      border:1px solid black;
+      padding: 10px;
+    }
+     .notes1{
+      margin: 5px 0 0 0;
+      border:1px solid black;
+      padding: 10px;
+      background-color:  #EAE4FB;
+    }
+     /************ Go green style ***************/
+    .goGreenSec{
+      margin: 5px 20px;
+      padding :10px;
+      border:1px solid green;
+    }
+    .goGreenSec span {
+        color: green;
+        font-weight: 600;
+      }
+     /************ Signature style ***************/
+.signatureDiv{
+ margin: 50px 20px 20px 0;
+justify-content:'flex-end'
+}
+     .blueStampArea {
+        display: flex;
+        text-align: end;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 80px;
+        align-items: flex-end;
+        transform: rotate(-3deg);
+        color: #05137e;
+        /* color: #02107c; */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="templateWrapper">
+      <div class="bgImage">
+        <svg width="800" height="109" viewBox="0 0 800 109" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="800" height="109" fill="#EAE4FB"/>
+            <path d="M0 69H466.775L500.486 88.8375L466.775 108.675H0V69Z" fill="#2B54E2"/>
+            </svg>
+            
+      </div>
+       <!-- Heading Sec. -->
+      <div class="quotationHeading">
+        <h1>Survey List</h1>
+      </div>
+      <!-- <div class="documentStyle">
+        <div style="display: flex; align-items: center;justify-content: space-between;" >
+            <p>AN ISO CERTIFIED : <span>9001:2008</span></p>
+            <p>SHOP ACT NO.:<span>&nbsp;24587</span></p>
+            <p>AFFILIATED BY : &nbsp;MSME</p>
+            <p>IBA APPROVED</p>
+        </div>
+       </div> -->
+      <div class="packerCompanyDetails">
+        <img
+          src="../another/Assets/essencelogo.png"
+          alt="companyLogo"
+          width="80"
+          height="80"
+        />
+        <div style="margin-left: 16px">
+          <span style="color: #070707; font-weight: 500">Essence Packers and movers</span >
+          <div class="phoneStyle">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+               fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.62 10.79C8.06 13.62 10.38 15.93 13.21 17.38L15.41 15.18C15.68 14.91 16.08 14.82 16.43 14.94C17.55 15.31 18.76 15.51 20 15.51C20.55 15.51 21 15.96 21 16.51V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z"
+                fill="black"
+              />
+            </svg>
+            <span style = "color: #000";>9717680033 / 8826357899</span>
+          </div>
+          <div class="emailStyle">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="black"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19.875 3.75H4.125C3.42904 3.75074 2.76179 4.02755 2.26967 4.51967C1.77755 5.01179 1.50074 5.67904 1.5 6.375V17.625C1.50074 18.321 1.77755 18.9882 2.26967 19.4803C2.76179 19.9725 3.42904 20.2493 4.125 20.25H19.875C20.571 20.2493 21.2382 19.9725 21.7303 19.4803C22.2225 18.9882 22.4993 18.321 22.5 17.625V6.375C22.4993 5.67904 22.2225 5.01179 21.7303 4.51967C21.2382 4.02755 20.571 3.75074 19.875 3.75ZM19.2103 8.09203L12.4603 13.342C12.3287 13.4444 12.1667 13.4999 12 13.4999C11.8333 13.4999 11.6713 13.4444 11.5397 13.342L4.78969 8.09203C4.71038 8.03214 4.64377 7.95709 4.59372 7.87123C4.54367 7.78537 4.51118 7.69042 4.49815 7.5919C4.48511 7.49338 4.49179 7.39325 4.51778 7.29733C4.54378 7.20142 4.58858 7.11162 4.64958 7.03316C4.71058 6.95471 4.78656 6.88916 4.87312 6.84032C4.95967 6.79149 5.05506 6.76034 5.15376 6.74869C5.25245 6.73704 5.35248 6.74513 5.44802 6.77247C5.54357 6.79981 5.63272 6.84587 5.71031 6.90797L12 11.7998L18.2897 6.90797C18.447 6.7892 18.6447 6.73711 18.8401 6.76296C19.0354 6.78881 19.2128 6.89053 19.3338 7.04612C19.4547 7.20171 19.5096 7.39866 19.4865 7.59439C19.4634 7.79011 19.3642 7.96888 19.2103 8.09203Z"
+                fill="black"
+              />
+            </svg>
+            <span style = "color: #000";> essence@gmail.com</span>
+          </div>
+          <div class="webstyle">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="black"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_959_10)">
+                <path
+                  d="M23.1412 12.0003C23.1412 14.9555 21.9672 17.7898 19.8775 19.8795C17.7878 21.9692 14.9536 23.1431 11.9983 23.1431C9.04306 23.1431 6.20883 21.9692 4.11914 19.8795C2.02944 17.7898 0.855469 14.9555 0.855469 12.0003M23.1412 12.0003C23.1412 9.04501 21.9672 6.21078 19.8775 4.12109C17.7878 2.0314 14.9536 0.857422 11.9983 0.857422C9.04306 0.857422 6.20883 2.0314 4.11914 4.12109C2.02944 6.21078 0.855469 9.04501 0.855469 12.0003M23.1412 12.0003H0.855469"
+                  stroke="white"
+                  stroke-width="1.71429"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M16.2824 12.0003C16.0719 16.0751 14.571 19.9774 11.9967 23.1431C9.42234 19.9774 7.92145 16.0751 7.71094 12.0003C7.92145 7.92544 9.42234 4.02311 11.9967 0.857422C14.571 4.02311 16.0719 7.92544 16.2824 12.0003Z"
+                  stroke="white"
+                  stroke-width="1.71429"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_959_10">
+                  <rect width="24" height="24" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+            <span style = "color: #000";>essence.com</span>
+          </div>
+        </div>
+      
+      </div>
+      <!-- Quotation to Sec. -->
+      <div class="quotationToStyle">
+          <div class="clientLeftSide">
+            <!-- <h5 style="margin-bottom: 4px">Quotation To</h3> -->
+          <span style="font-weight: 550;font-size: 18px;">Lalit Vats</span>
+          <div class="clientEmailStyle">
+            <p>Contact :</p>
+            <span> &nbsp;9315784785</span>
+          </div>
+          <div class="clientEmailStyle">
+            <p>Email :</p>
+            <span> &nbsp;lalit@gmqil.com</span>
+          </div>
+          <!-- <div class="clientEmailStyle">
+            <p>Address :</p>
+            <span> &nbsp;spaze Itch park sec.49 gurugaon</span>
+          </div> -->
+        </div>
+        <div class="clientRightSide">
+            <div class="clientEmailStyle">
+                <p>Survey List No :</p>
+                <span> &nbsp;9315784785</span>
+              </div>
+            <div class="clientEmailStyle">
+                <p>Date :</p>
+                <span> &nbsp;9315784785</span>
+              </div>
+            <!-- <div class="clientEmailStyle">
+                <p>GSTIN :</p>
+                <span> &nbsp;9315784785</span>
+              </div> -->
+        </div>
+      </div>
+      <!-- Shifting Type to Sec. -->
+      <div 
+       class="shiftingTypetbl">
+      <table >
+<tr>
+    <td colspan="3"> <span> Shifting From : </span> Domestic  </td>  
+    <td colspan="3"> <span> Shifting From : </span> Domestic  </td>  
+</tr>
+<!-- <tr>
+  <td colspan="3"> <span> Shifting To : </span>Domestic </td>
+</tr> -->
+      </table>
+    </div>
+    <!------------ Main Table to Sec. ------------>
+    <div class="mainTable">
+<table>
+  <tr style=" background-color: #EAE4FB; color: #031438;">
+      <td colspan="1">
+        S.NO.
+      </td>
+      <td colspan="7">
+Goods Discription
+      </td>
+      <td colspan="1" class="textalign">
+Qty.
+      </td>
+      <td colspan="2" class="textalign">
+Value of Goods
+      </td>
+      <td colspan="3" class="textalign">
+Remarks
+      </td>
+  </tr>
+  <tr>
+    <td colspan="1" class="textalign">1</td>
+    <td colspan="7">Freight/Transportation Charges</td>
+    <td colspan="1" class="textalign"></td>
+    <td colspan="2" class="textalign"></td>
+    <td colspan="3" class="textalign"></td>
+  </tr>
+  <tr>
+    <td colspan="1" class="textalign">2</td>
+    <td colspan="7">Packing Charges</td>
+    <td colspan="1" class="textalign"></td>
+    <td colspan="2" class="textalign"></td>
+    <td colspan="3" class="textalign"></td>
+  </tr>
+  <tr>
+    <td colspan="1" class="textalign">3</td>
+    <td colspan="7">Packing Charges With material</td>
+    <td colspan="1" class="textalign"></td>
+    <td colspan="2" class="textalign"></td>
+    <td colspan="3" class="textalign"></td>
+  </tr>
+  <tr>
+    <td colspan="1" class="textalign"></td>
+    <td colspan="7" style="text-align:end ;">Total</td>
+    <td colspan="1" class="textalign"></td>
+    <td colspan="2" class="textalign"></td>
+    <td colspan="3" class="textalign"></td>
+  </tr>
+</table>
+<!------------- Nots Sec. ------------------>
+<div class="notes1">
+  <div>
+  <p>We checked all the item listed and numbered <span> --01-03--</span> inclusive with a total no of --03-- and acknowledge that this is a true and complete listing of the goods presented and the conditions of goods is subject to change</p>
+  </div>
+</div>
+    </div>
+    <!-- Other Detail Sec. -->
+    <!------------- Payment Detail Sec. ------------------>
+    <div class="paymentDetails">
+      <div class="bankDetail">
+        <h4 style="margin-bottom: 5px">Our Bank Detail:</h4>
+        {{#each bankAccounts}} {{#if this.accountHolderName}}
+        <p>
+          <span>Beneficiary Name:</span>
+          {{this.accountHolderName}}
+        </p>
+        {{/if}} {{#if this.bankId}}
+        <p>
+          <span>Bank Name:</span>
+          {{this.bankId}}
+        </p>
+        {{/if}} {{#if this.accountNumber}}
+        <p>
+          <span>Bank A/C No:</span>
+          {{this.accountNumber}}
+        </p>
+        {{/if}} {{#if this.ifscCode}}
+        <p>
+          <span>Bank IFSC Code:</span>
+          {{this.ifscCode}}
+        </p>
+        {{/if}} {{/each}}
+      </div>
+      {{#if bankAccounts}}
+      <div class="upiDetail">
+        <h4 style="margin-bottom: 5px">Our UPI Detail:</h4>
+        {{#each bankAccounts}} {{#if this.upiId}}
+        <p>
+          <span>{{this.upiId}}</span>
+        </p>
+        {{/if}} {{/each}}
+      </div>
+      {{/if}} {{#if bankAccounts}}
+      <div class="qrCode">
+        <h4 style="margin-bottom: 5px">Our QR CODE:</h4>
+        {{#each bankAccounts}} {{#if this.qrCode}}
+        <image
+          src="{{this.qrCode}}"
+          height="100"
+          width="100"
+          alt="qr-code"
+        />
+        {{/if}} {{/each}}
+      </div>
+      {{/if}}
+    </div>
+     <!------------- T.N.Conditions Sec. ------------------>
+    <div class="tncConditions">
+    <div>
+      <h6 style="margin-bottom: 5px">TERMS & CONDITIONS:</h6>
+      <div class="termsConditions">{{{termsAndConditions}}}</div>
+    </div>
+  </div>
+  <!------------- Nots Sec. ------------------>
+  <div class="notes">
+  <div>
+    <h6 style="margin-bottom: 5px">NOTES:</h6>
+    <div class="termsConditions">{{{notes}}}</div>
+  </div>
+</div>
+  <!------------- Payment terms Sec. ------------------>
+<div class="tncConditions">
+          <div>
+            <h6 style="margin-bottom: 5px">PAYMENT TERMS:</h6>
+            <div class="termsConditions">{{{paymentTerms}}}</div>
+          </div>
+        </div>
+  <!------------- Content Type Sec. ------------------>
+        <div class="tncConditions"  >
+          <div>
+            <h6 style="margin-bottom: 5px">{{this.contentType}}:</h6>
+            {{{this.content}}}
+          </div>
+        </div>
+          <!------------- Go green Sec. ------------------>
+        <div class="goGreenSec">
+          <p>
+            This is a computer generated document.
+            <span>SAVE PAPER-SAVE TREE|BE DIGITAL-GO GREEN </span>
+          </p>
+        </div>
+          <!------------- Signature Sec. ------------------>
+          <div class="signatureDiv">
+            <div class="blueStampArea">
+              <p><strong>For {{companyName}}</strong></p>
+              <img
+                src="{{companySignature}}"
+                width="100"
+                height="100"
+                style="object-fit: contain"
+              />
+              <p>Manager</p>
+            </div>
+          </div>
+    </div>
+  </body>
+</html>
